@@ -1,11 +1,11 @@
 package com.revature.pojo;
 
 public class Character {
-	int characterId;
-	int rank;
-	int win;
-	int losses;
-	double score;
+	private int characterId;
+	private int rank;
+	private int win;
+	private int losses;
+	private double score;
 
 	public Character() {
 		super();

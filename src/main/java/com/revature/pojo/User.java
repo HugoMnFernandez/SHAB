@@ -1,10 +1,10 @@
 package com.revature.pojo;
 
 public class User {
-	int userId;
-	String username;
-	String password;
-	Boolean isAdmin;
+	private int userId;
+	private String username;
+	private String password;
+	private Boolean isAdmin;
 
 	public User() {
 		super();
