@@ -1,9 +1,23 @@
 package com.revature.pojo;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="shabuser")
 public class User {
+	
+	@Id
+	@Column(name="userid")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
+	
+	@Column(name="username")
 	private String username;
+	
+	@Column(name="password")
 	private String password;
+	
+	@Column(name="isadmin")
 	private Boolean isAdmin;
 
 	public User() {

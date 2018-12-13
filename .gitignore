@@ -1,7 +1,10 @@
 /.metadata/
 /.metadata/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 720a3c503e705912d650e004a9e690fff8659744
 # Eclipse
 .classpath
 .project

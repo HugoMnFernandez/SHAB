@@ -1,21 +1,36 @@
 package com.revature.pojo;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="shabcharacter")
 public class Character {
+	
+	@Id
+	@Column(name="characterid")
 	private int characterId;
+	
+	@Column(name="rank")
 	private int rank;
-	private int win;
+	
+	@Column(name="wins")
+	private int wins;
+	
+	@Column(name="losses")
 	private int losses;
+	
+	@Column(name="score")
 	private double score;
 
 	public Character() {
 		super();
 	}
 
-	public Character(int characterId, int rank, int win, int losses, double score) {
+	public Character(int characterId, int rank, int wins, int losses, double score) {
 		super();
 		this.characterId = characterId;
 		this.rank = rank;
-		this.win = win;
+		this.wins = wins;
 		this.losses = losses;
 		this.score = score;
 	}
@@ -36,12 +51,12 @@ public class Character {
 		this.rank = rank;
 	}
 
-	public int getWin() {
-		return win;
+	public int getWins() {
+		return wins;
 	}
 
-	public void setWin(int win) {
-		this.win = win;
+	public void setWins(int wins) {
+		this.wins = wins;
 	}
 
 	public int getLosses() {
