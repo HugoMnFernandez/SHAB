@@ -1,9 +1,16 @@
 package com.revature.pojo;
 
+import java.util.Set;
+
 import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
+import com.revature.pojo.Character;
 
 @Entity
 @Table(name="shabuser")
+@Component
 public class User {
 	
 	@Id
@@ -20,8 +27,19 @@ public class User {
 	@Column(name="isadmin")
 	private Boolean isAdmin;
 
+	@ManyToMany
+	@JoinTable(name="shabuser_characters", joinColumns=@JoinColumn(name="userid"),
+			inverseJoinColumns=@JoinColumn(name="characterid"))
+	private Set<Character> followedCharacters; //The set of characters a user is following
+	
 	public User() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", isAdmin=" + isAdmin
+				+ ", followedCharacters=" + followedCharacters + "]";
 	}
 
 	public User(int userId, String username, String password, Boolean isAdmin) {

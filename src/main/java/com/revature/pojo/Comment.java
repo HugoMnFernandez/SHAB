@@ -1,14 +1,41 @@
 package com.revature.pojo;
 
+import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="shabcomment")
+@Component
 public class Comment {
 
+	@Id
+	@Column(name="commentid")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int commentId;
+	
+	@ManyToOne
+	@JoinColumn(name="userid")
 	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="battleid")
 	private Battle battle;
-	private int team;
+	
+	@Override
+	public String toString() {
+		return "Comment [commentId=" + commentId + ", user=" + user + ", battle=" + battle + ", team=" + team
+				+ ", votes=" + votes + "]";
+	}
+
+	@ManyToOne
+	@JoinColumn(name="teamid")
+	private Team team;
+	
+	@Column(name="votes")
 	private int votes;
 
-	public Comment(int commentId, User user, Battle battle, int team, int votes) {
+	public Comment(int commentId, User user, Battle battle, Team team, int votes) {
 		super();
 		this.commentId = commentId;
 		this.user = user;
@@ -45,11 +72,11 @@ public class Comment {
 		this.battle = battle;
 	}
 
-	public int getTeam() {
+	public Team getTeam() {
 		return team;
 	}
 
-	public void setTeam(int team) {
+	public void setTeam(Team team) {
 		this.team = team;
 	}
 
