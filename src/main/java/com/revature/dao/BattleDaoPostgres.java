@@ -4,25 +4,25 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
-import com.revature.pojo.User;
+import com.revature.pojo.Battle;
 import com.revature.util.SessionUtil;
 
 @Component
-public class UserDaoPostgres implements UserDao {
+public class BattleDaoPostgres implements BattleDao {
 
 	Session sess = SessionUtil.getSession();
 	
-	public Integer makeUser(User u) {
-		return (Integer) sess.save(u);
+	public Integer makeBattle(Battle b) {
+		return (Integer) sess.save(b);
 	}
 
-	public User getUserById(int id) {
-		return sess.get(User.class, id);
+	public Battle getBattleById(int id) {
+		return sess.get(Battle.class, id);
 	}
 
-	public void removeUser(User u) {
+	public void removeBattle(Battle b) {
 		Transaction trans = sess.beginTransaction();
-		sess.delete(u);
+		sess.delete(b);
 		trans.commit();
 	}
 

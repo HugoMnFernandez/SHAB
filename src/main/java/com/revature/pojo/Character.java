@@ -1,9 +1,20 @@
 package com.revature.pojo;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="shabcharacter")
+@Component
 public class Character {
 	
 	@Id
@@ -19,11 +30,39 @@ public class Character {
 	@Column(name="losses")
 	private int losses;
 	
+	@ManyToMany
+	@JoinTable(name="team_characters", joinColumns = @JoinColumn(name="characterid"),
+			inverseJoinColumns = @JoinColumn(name="teamid"))
+	private List<Team> teams;
+	
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
+	}
+
+	@Override
+	public String toString() {
+		return "Character [characterId=" + characterId + ", rank=" + rank + ", wins=" + wins + ", losses=" + losses + ", score=" + score + "]";
+	}
+
 	@Column(name="score")
-	private double score;
+	private double score;	
 
 	public Character() {
 		super();
+	}
+
+	public Character(int characterId, int rank, int wins, int losses, List<Team> teams, double score) {
+		super();
+		this.characterId = characterId;
+		this.rank = rank;
+		this.wins = wins;
+		this.losses = losses;
+		this.teams = teams;
+		this.score = score;
 	}
 
 	public Character(int characterId, int rank, int wins, int losses, double score) {

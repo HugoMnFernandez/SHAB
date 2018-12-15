@@ -4,30 +4,30 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
-import com.revature.pojo.Character;
+import com.revature.pojo.Team;
 import com.revature.util.SessionUtil;
 
 @Component
-public class CharacterDaoPostgres implements CharacterDao {
+public class TeamDaoPostgres implements TeamDao{
 
 	Session sess = SessionUtil.getSession();
 	
-	public void makeCharacter(Character c) {
+	public Integer makeTeam(Team t) {
 		Transaction trans = sess.beginTransaction();
-		sess.save(c);
+		Integer newId = (Integer) sess.save(t) ;
 		trans.commit();
+		 
+		 return newId;
 	}
 
-	public Character getCharacterById(int id) {
-		System.out.println(sess);
-		return sess.get(Character.class, id);
+	public Team getTeamById(int id) {
+		return sess.get(Team.class, id);
 	}
 
-	public void removeCharacter(Character c) {
+	public void removeTeam(Team t) {
 		Transaction trans = sess.beginTransaction();
-		sess.delete(c);
+		sess.delete(t);
 		trans.commit();
-		
 	}
 
 }

@@ -22,5 +22,6 @@
 		<mapping class="com.revature.pojo.Character"/>
 		<mapping class="com.revature.pojo.Comment"/>
 		<mapping class="com.revature.pojo.Battle"/>
+		<mapping class="com.revature.pojo.Team"/>
 	</session-factory>
 </hibernate-configuration>
