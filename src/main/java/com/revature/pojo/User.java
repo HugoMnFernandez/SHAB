@@ -3,6 +3,9 @@ package com.revature.pojo;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
@@ -19,9 +22,13 @@ public class User {
 	private int userId;
 	
 	@Column(name="username")
+	@NotNull(message="Please enter a username")
+	@Size(min=6, max=15, message="Username must be between 6 and 15 characters")
 	private String username;
 	
 	@Column(name="password")
+	@NotNull(message="please enter a password")
+	@Size(min=8, max=20, message="Password must be between 8 and 20 characters")
 	private String password;
 	
 	@Column(name="isadmin")

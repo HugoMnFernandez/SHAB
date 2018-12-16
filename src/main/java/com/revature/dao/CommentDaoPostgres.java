@@ -17,7 +17,11 @@ public class CommentDaoPostgres implements CommentDao{
 	Session sess = SessionUtil.getSession();
 	
 	public Integer makeComment(Comment c) {
-		return (Integer) sess.save(c);
+		Transaction trans = sess.beginTransaction();
+		Integer newId = (Integer) sess.save(c) ;
+		trans.commit();
+		 
+		 return newId;
 	}
 
 	public Comment getComentById(int id) {

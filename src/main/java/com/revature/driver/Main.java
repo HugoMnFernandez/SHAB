@@ -23,7 +23,7 @@ public class Main {
 	//Main method for testing
 	public static void main(String[] args) {
 		
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("/Shab/src/main/webapp/WEB-INF/beans.xml");
 		
 		//Create Daos for testing
 		TeamDao tDao = (TeamDao) ac.getBean("teamDaoPostgres");
