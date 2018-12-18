@@ -1,7 +1,10 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.pojo.User;
@@ -13,7 +16,11 @@ public class UserDaoPostgres implements UserDao {
 	Session sess = SessionUtil.getSession();
 	
 	public Integer makeUser(User u) {
-		return (Integer) sess.save(u);
+		Transaction trans = sess.beginTransaction();
+		Integer newId = (Integer) sess.save(u) ;
+		trans.commit();
+		 
+		 return newId;
 	}
 
 	public User getUserById(int id) {
@@ -24,6 +31,18 @@ public class UserDaoPostgres implements UserDao {
 		Transaction trans = sess.beginTransaction();
 		sess.delete(u);
 		trans.commit();
+	}
+
+	public User getUserByUsername(String username) {
+		Query<User> query = sess.createQuery("from User AS u WHERE u.username = :username");
+		query.setParameter("username", username);
+		User user = query.getSingleResult();
+		return user;
+	}
+
+	public List<User> getAllUsers() {
+		Query<User> query = sess.createQuery("from User");
+		return query.getResultList();
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.revature.dao.BattleDao;
 import com.revature.dao.CharacterDao;
+import com.revature.dao.CommentDao;
 import com.revature.dao.TeamDao;
 import com.revature.dao.UserDao;
 import com.revature.pojo.Battle;
@@ -71,10 +72,11 @@ public class DaoTests {
 		assertTrue("Asgard".equals(b.getLocation()));
 	}
 	
-//	@Test
-//	public void testCommentsDao() {
-//		CommentDao cDao = new CommentDaoPostgres();
-//		
-//	}
+	@Test
+	public void testCommentsDao() {
+		CommentDao cDao = (CommentDao) ac.getBean("commentDaoPostgres");
+		
+		
+	}
 	
 }

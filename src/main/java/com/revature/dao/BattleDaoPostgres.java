@@ -13,7 +13,11 @@ public class BattleDaoPostgres implements BattleDao {
 	Session sess = SessionUtil.getSession();
 	
 	public Integer makeBattle(Battle b) {
-		return (Integer) sess.save(b);
+		Transaction trans = sess.beginTransaction();
+		Integer newId = (Integer) sess.save(b) ;
+		trans.commit();
+		
+		return newId;
 	}
 
 	public Battle getBattleById(int id) {
