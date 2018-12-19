@@ -1,5 +1,9 @@
 package com.revature.service;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +27,18 @@ public class BattleService {
 	public void deleteBattle(Battle b) {
 		bDao.removeBattle(b);
 	}
+	
+	public List<Battle> getAllActiveBattles() {
+		List<Battle> activeBattles = new ArrayList<Battle>();
+		Date today = new Date();
+		for(Battle b: bDao.getAllBattles()) {
+			if(b.getEndDate().after(today)) {
+				activeBattles.add(b);
+			}
+		}
+		
+		return activeBattles;
+		
+	}
+	
 }

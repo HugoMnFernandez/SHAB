@@ -1,5 +1,7 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import com.revature.pojo.Battle;
 
 public interface BattleDao {
@@ -9,4 +11,6 @@ public interface BattleDao {
 	public Battle getBattleById(int id);
 	
 	public void removeBattle(Battle b);
+	
+	public List<Battle> getAllBattles();
 }
