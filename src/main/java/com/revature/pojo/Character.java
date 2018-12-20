@@ -30,18 +30,6 @@ public class Character {
 	@Column(name="losses")
 	private int losses;
 	
-	@ManyToMany
-	@JoinTable(name="team_characters", joinColumns = @JoinColumn(name="characterid"),
-			inverseJoinColumns = @JoinColumn(name="teamid"))
-	private List<Team> teams;
-	
-	public List<Team> getTeams() {
-		return teams;
-	}
-
-	public void setTeams(List<Team> teams) {
-		this.teams = teams;
-	}
 
 	@Override
 	public String toString() {
