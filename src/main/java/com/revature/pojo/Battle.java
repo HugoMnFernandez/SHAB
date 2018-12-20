@@ -35,7 +35,7 @@ public class Battle {
 	private Date endDate;
 	
 	@Column(name="result")
-	private int Result;
+	private int result;
 	
 	@Column(name="team1votes")
 	private int team1Votes;
@@ -57,7 +57,7 @@ public class Battle {
 	@Override
 	public String toString() {
 		return "Battle [battleId=" + battleId + ", location=" + location + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", Result=" + Result + ", team1Votes=" + team1Votes + ", team2Votes=" + team2Votes
+				+ endDate + ", Result=" + result + ", team1Votes=" + team1Votes + ", team2Votes=" + team2Votes
 				+ ", team1=" + team1 + ", team2=" + team2 + "]";
 	}
 
@@ -72,7 +72,7 @@ public class Battle {
 		this.location = location;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		Result = result;
+		this.result = result;
 		this.team1Votes = team1Votes;
 		this.team2Votes = team2Votes;
 		this.team1 = team1;
@@ -112,11 +112,11 @@ public class Battle {
 	}
 
 	public int getResult() {
-		return Result;
+		return result;
 	}
 
 	public void setResult(int result) {
-		Result = result;
+		this.result = result;
 	}
 
 	public int getTeam1Votes() {

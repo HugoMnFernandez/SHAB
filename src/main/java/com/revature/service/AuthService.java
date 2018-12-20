@@ -15,7 +15,8 @@ public class AuthService {
 	public User validateUser(String username, String password) {
 		
 		User u = uDao.getUserByUsername(username);
-		if(password.equals(u.getPassword())){
+		
+		if(u != null && password.equals(u.getPassword())){
 			return u;
 		}
 		

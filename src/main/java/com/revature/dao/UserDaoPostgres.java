@@ -34,10 +34,15 @@ public class UserDaoPostgres implements UserDao {
 	}
 
 	public User getUserByUsername(String username) {
-		Query<User> query = sess.createQuery("from User AS u WHERE u.username = :username");
-		query.setParameter("username", username);
-		User user = query.getSingleResult();
-		return user;
+		try {
+			Query<User> query = sess.createQuery("from User AS u WHERE u.username = :username");
+			query.setParameter("username", username);
+			User user = query.getSingleResult();
+			return user;
+		} catch(Exception e) {
+			// return null if no user is found and an exception is thrown
+			return null;
+		}
 	}
 
 	public List<User> getAllUsers() {
