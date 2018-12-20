@@ -16,7 +16,15 @@ public class BattleService {
 	@Autowired
 	BattleDao bDao;
 	
+	@Autowired 
+	TeamService tServ;
+	
 	public Integer createBattle(Battle b) {
+		
+		//Create the teams first
+		tServ.createTeam(b.getTeam1());
+		tServ.createTeam(b.getTeam2());
+		
 		return bDao.makeBattle(b);
 	}
 	

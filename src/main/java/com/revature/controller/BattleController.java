@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.pojo.Battle;
 import com.revature.service.BattleService;
+import com.revature.service.TeamService;
 
 @RestController
 @RequestMapping("/battle")
@@ -22,10 +23,9 @@ public class BattleController {
 	@Autowired
 	BattleService bServ;
 	
-
-	
 	@PostMapping(consumes = "application/json")
 	public void makeBattle(@RequestBody Battle battle) {
+		System.out.println("making battle: " + battle);
 		bServ.createBattle(battle);
 	}
 	

@@ -35,6 +35,8 @@ public class LoginController {
 		System.out.println(user);
 		User authUser = aServ.validateUser(user.getUsername(), user.getPassword());
 		
+		System.out.println("Logging in");
+		
 		if(authUser != null) {
 			sess.setAttribute("user", authUser);
 			
