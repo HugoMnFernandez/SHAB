@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,4 +31,11 @@ public class BattleController {
 	public Battle getBattleById(@PathVariable int battleId) {
 		return bServ.getBattleById(battleId);
 	}
+	
+	
+	@GetMapping
+	public List<Battle> getAllActiveBattles(){
+		return bServ.getAllActiveBattles();
+	}
+	
 }
