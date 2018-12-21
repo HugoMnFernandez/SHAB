@@ -79,6 +79,14 @@ public class Battle {
 		this.team2 = team2;
 	}
 
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	public int getBattleId() {
 		return battleId;
 	}

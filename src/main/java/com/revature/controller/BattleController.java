@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.pojo.Battle;
 import com.revature.service.BattleService;
-import com.revature.service.TeamService;
 
 @RestController
 @RequestMapping("/battle")
@@ -38,6 +38,11 @@ public class BattleController {
 	@GetMapping
 	public List<Battle> getAllActiveBattles(){
 		return bServ.getAllActiveBattles();
+	}
+	
+	@PutMapping(consumes = "application/json")
+	public void updateBattle(@RequestBody Battle battle) {
+		bServ.updateBattle(battle);
 	}
 	
 }

@@ -13,4 +13,6 @@ public interface BattleDao {
 	public void removeBattle(Battle b);
 	
 	public List<Battle> getAllBattles();
+	
+	public void updateBattle(Battle b);
 }

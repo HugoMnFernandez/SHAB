@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.dao.BattleDao;
 import com.revature.pojo.Battle;
+import com.revature.pojo.Comment;
 
 @Service
 public class BattleService {
@@ -18,6 +19,9 @@ public class BattleService {
 	
 	@Autowired 
 	TeamService tServ;
+	
+	@Autowired
+	CommentService cServ;
 	
 	public Integer createBattle(Battle b) {
 		
@@ -47,6 +51,13 @@ public class BattleService {
 		
 		return activeBattles;
 		
+	}
+	
+	public void updateBattle(Battle b) {
+		Comment newComment = b.getComments().get(b.getComments().size() - 1);
+		newComment.setBattle(b);
+		cServ.createComment(newComment);
+		bDao.updateBattle(b);
 	}
 	
 }

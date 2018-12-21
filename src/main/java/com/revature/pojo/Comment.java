@@ -1,8 +1,17 @@
 package com.revature.pojo;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="shabcomment")
@@ -64,6 +73,7 @@ public class Comment {
 		this.user = user;
 	}
 
+	@JsonIgnore
 	public Battle getBattle() {
 		return battle;
 	}
