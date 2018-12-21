@@ -1,13 +1,8 @@
 package com.revature.pojo;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -15,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="shabcharacter")
 @Component
-public class Character {
+public class Character implements Comparable<Character> {
 	
 	@Id
 	@Column(name="characterid")
@@ -43,15 +38,6 @@ public class Character {
 		super();
 	}
 
-	public Character(int characterId, int rank, int wins, int losses, List<Team> teams, double score) {
-		super();
-		this.characterId = characterId;
-		this.rank = rank;
-		this.wins = wins;
-		this.losses = losses;
-		this.teams = teams;
-		this.score = score;
-	}
 
 	public Character(int characterId, int rank, int wins, int losses, double score) {
 		super();
@@ -100,6 +86,17 @@ public class Character {
 
 	public void setScore(double score) {
 		this.score = score;
+	}
+
+
+	public int compareTo(Character o) {
+		if(this.score>o.score) {
+			return -1;
+		}else if(this.score == o.score) {
+			return 0;
+		}else {
+			return 1;
+		}
 	}
 
 }
